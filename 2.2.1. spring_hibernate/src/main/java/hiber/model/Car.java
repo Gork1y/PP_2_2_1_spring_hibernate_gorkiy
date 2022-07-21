@@ -11,10 +11,10 @@ public class Car {
     private Long id;
 
     @Column(name = "model")
-    String model;
+    private String model;
 
     @Column(name = "series")
-    int series;
+    private int series;
 
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "car")
     @JoinColumn(name = "user_id")

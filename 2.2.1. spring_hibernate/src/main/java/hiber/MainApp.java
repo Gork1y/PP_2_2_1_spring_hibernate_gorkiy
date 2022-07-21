@@ -49,13 +49,13 @@ public class MainApp {
       System.out.println(userService.getUserByCar("Mazda", 9));
 
       try {
-         System.out.println(userService.getUserByCars(Mazda));
+         System.out.println(userService.getUserByCar(Mazda));
       } catch (NoResultException e) {
          System.out.println("Пользователь с авто " + Mazda + " не найден");
       }
 
       try {
-         System.out.println(userService.getUserByCars(Gaz));
+         System.out.println(userService.getUserByCar(Gaz));
       } catch (NoResultException e) {
          System.out.println("Пользователь с авто " + Gaz + " не найден");
       }

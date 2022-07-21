@@ -13,7 +13,7 @@ import java.util.List;
 public class UserServiceImp implements UserService {
 
     @Autowired
-    public UserDao userDao;
+    private UserDao userDao;
 
     @Transactional
     @Override
@@ -35,7 +35,7 @@ public class UserServiceImp implements UserService {
 
     @Transactional(readOnly = true)
     @Override
-    public User getUserByCars(Car car) {
+    public User getUserByCar(Car car) {
         return UserDao.getUserByCar(car);
     }
 

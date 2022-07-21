@@ -13,5 +13,5 @@ public interface UserService {
     @Transactional
     User getUserByCar(String model, int series);
     @Transactional
-    User getUserByCars(Car car);
+    User getUserByCar(Car car);
 }
