@@ -28,13 +28,13 @@ public class MainApp {
         David.setCar(Gaz);
         Aleksey.setCar(Zil);
         Raul.setCar(Volga);
-        userService.add(Ivan);
-        userService.add(David);
-        userService.add(Aleksey);
-        userService.add(Raul);
+        userService.addUser(Ivan);
+        userService.addUser(David);
+        userService.addUser(Aleksey);
+        userService.addUser(Raul);
 
 
-        List<User> users = userService.listUsers();
+        List<User> users = userService.getlistUsers();
         for (User user : users) {
             System.out.println("Id = " + user.getId());
             System.out.println("First Name = " + user.getFirstName());
@@ -43,11 +43,11 @@ public class MainApp {
             System.out.println();
         }
 
-        for (User user : userService.listUsers()) {
+        for (User user : userService.getlistUsers()) {
             System.out.println(user + " " + user.getCar());
         }
 
-        System.out.println("Автомобиль Мазда принадлежит: " + userService.getByCar(Mazda));
+        System.out.println("Автомобиль Мазда принадлежит: " + userService.getUserByCarModelAndSeries(Mazda));
         context.close();
     }
 }

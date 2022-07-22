@@ -8,9 +8,9 @@ import java.util.List;
 import java.sql.SQLException;
 
 public interface UserService {
-    void add(User user);
+    void addUser(User user);
 
-    List<User> listUsers();
+    List<User> getlistUsers();
 
-    User getByCar(Car car);
+    User getUserByCarModelAndSeries(Car car);
 }
