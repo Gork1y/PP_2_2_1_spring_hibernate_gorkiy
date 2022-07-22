@@ -46,6 +46,8 @@ public class MainApp {
         for (User user : userService.listUsers()) {
             System.out.println(user + " " + user.getCar());
         }
+
+        System.out.println("Автомобиль Мазда принадлежит: " + userService.getByCar(Mazda));
         context.close();
     }
 }
