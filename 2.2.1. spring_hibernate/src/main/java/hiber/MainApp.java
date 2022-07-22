@@ -15,19 +15,10 @@ public class MainApp {
 
         UserService userService = context.getBean(UserService.class);
 
-        User Ivan = (new User("Ivan", "Ivanov", "Ivan@gmail.com"));
-        User David = (new User("David", "Dulin", "Dulin@mail.com"));
-        User Aleksey = (new User("Aleksey", "Popovich", "Aleksey@mail.ru"));
-        User Raul = (new User("Raul", "Mamedov", "Raul@mail.ru"));
-        Car Mazda = new Car("Mazda", 9);
-        Car Gaz = new Car("Gaz", 53);
-        Car Zil = new Car("Zil", 301);
-        Car Mercedes = new Car("Mercedes", 200);
-        Car Volga = new Car("Volga", 3310);
-        Ivan.setCar(Mazda);
-        David.setCar(Gaz);
-        Aleksey.setCar(Zil);
-        Raul.setCar(Volga);
+        User Ivan = (new User("Ivan", "Ivanov", "Ivan@gmail.com", new Car ("Mazda",8)));
+        User David = (new User("David", "Dulin", "Dulin@mail.com", new Car("Gaz", 53)));
+        User Aleksey = (new User("Aleksey", "Popovich", "Aleksey@mail.ru", new Car("Zil", 301)));
+        User Raul = (new User("Raul", "Mamedov", "Raul@mail.ru", new Car("Mercedes", 200)));
         userService.addUser(Ivan);
         userService.addUser(David);
         userService.addUser(Aleksey);
@@ -47,7 +38,6 @@ public class MainApp {
             System.out.println(user + " " + user.getCar());
         }
 
-        System.out.println("Автомобиль Мазда принадлежит: " + userService.getUserByCarModelAndSeries(Mazda));
         context.close();
     }
 }

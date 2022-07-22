@@ -25,13 +25,21 @@ public class User {
     @JoinColumn(name = "car_id", referencedColumnName = "id")
     private Car car;
 
-    public User() {
-    }
-
     public User(String firstName, String lastName, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+    }
+
+    public User(String firstName, String lastName, String email, Car car) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.car = car;
+    }
+
+    public User() {
+
     }
 
     public Long getId() {
