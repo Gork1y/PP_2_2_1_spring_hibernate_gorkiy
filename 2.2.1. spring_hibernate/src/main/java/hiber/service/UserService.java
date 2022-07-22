@@ -11,5 +11,6 @@ public interface UserService {
     void add(User user);
     List<User> listUsers();
     User getUserByCar(Car car);
-    void addCar(Car car);
+
+    void dropUsersTable();
 }

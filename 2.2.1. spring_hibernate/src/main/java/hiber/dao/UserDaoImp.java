@@ -44,9 +44,8 @@ public class UserDaoImp implements UserDao {
         return user;
     }
 
-    @Override
-    public void addCar(Car car) {
-        sessionFactory.getCurrentSession().save(car);
-    }
+    public void dropUsersTable() {
+            sessionFactory.getCurrentSession().createSQLQuery("TRUNCATE TABLE users").executeUpdate();
 
+    }
 }

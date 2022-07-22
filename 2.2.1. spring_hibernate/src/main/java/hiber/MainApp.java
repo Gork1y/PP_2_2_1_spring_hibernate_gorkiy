@@ -19,21 +19,20 @@ public class MainApp {
         User David = (new User("David", "Dulin", "Dulin@mail.com"));
         User Aleksey = (new User("Aleksey", "Popovich", "Aleksey@mail.ru"));
         User Raul = (new User("Raul", "Mamedov", "Raul@mail.ru"));
-        userService.add(Ivan);
-        userService.add(David);
-        userService.add(Aleksey);
-        userService.add(Raul);
-
         Car Mazda = new Car("Mazda", 9);
         Car Gaz = new Car("Gaz", 53);
         Car Zil = new Car("Zil", 301);
         Car Mercedes = new Car("Mercedes", 200);
         Car Volga = new Car("Volga", 3310);
-        userService.addCar(Mazda);
-        userService.addCar(Gaz);
-        userService.addCar(Zil);
-        userService.addCar(Mercedes);
-        userService.addCar(Volga);
+        Ivan.setCar(Mazda);
+        David.setCar(Gaz);
+        Aleksey.setCar(Zil);
+        Raul.setCar(Volga);
+        userService.add(Ivan);
+        userService.add(David);
+        userService.add(Aleksey);
+        userService.add(Raul);
+
 
         List<User> users = userService.listUsers();
         for (User user : users) {
@@ -47,7 +46,6 @@ public class MainApp {
         for (User user : userService.listUsers()) {
             System.out.println(user + " " + user.getCar());
         }
-
         context.close();
     }
 }

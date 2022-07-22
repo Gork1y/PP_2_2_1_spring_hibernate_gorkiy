@@ -34,8 +34,7 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    public void addCar(Car car) {
-        userDao.addCar(car);
+    public void dropUsersTable() {
+        userDao.dropUsersTable();
     }
-
 }
