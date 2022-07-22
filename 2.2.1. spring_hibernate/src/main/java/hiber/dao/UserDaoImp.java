@@ -6,41 +6,47 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Repository
 public class UserDaoImp implements UserDao {
 
-   @Autowired
-   private SessionFactory sessionFactory;
+    private SessionFactory sessionFactory;
 
-   @Override
-   public void add(User user) {
-      sessionFactory.getCurrentSession().save(user);
-   }
+    @Autowired
+    public UserDaoImp(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
-   @Override
-   @SuppressWarnings("unchecked")
-   public List<User> listUsers() {
-      TypedQuery<User> query=sessionFactory.getCurrentSession().createQuery("from User");
-      return query.getResultList();
-   }
+    @Override
+    public void add(User user) {
+        sessionFactory.getCurrentSession().save(user);
+    }
 
-   @Override
-   public User getUserByCar(String model, int series) {
-      String hql = "from User user where user.car.model = :model and user.car.series = :series";
-      TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery(hql);
-      query.setParameter("model", model).setParameter("series", series);
-      return query.setMaxResults(1).getSingleResult();
-   }
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<User> listUsers() {
+        TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery("from User");
+        return query.getResultList();
+    }
 
-   @Override
-   public User getUserByCar(Car car) {
-      String hql = "from User user where user.car.model = :model and user.car.series = :series";
-      TypedQuery<User> query = sessionFactory.getCurrentSession().createQuery(hql);
-      query.setParameter("model", car.getModel()).setParameter("series", car.getSeries());
-      return query.setMaxResults(1).getSingleResult();
-   }
+    @Override
+    public User getUserByCar(String model, int series) {
+        Query query = sessionFactory.getCurrentSession().createQuery("from Car where model=:model and series =: series");
+        query.setParameter("model", model);
+        query.setParameter("series", series);
+        Car car = (Car) query.getSingleResult();
+        Query query2 = sessionFactory.getCurrentSession().createQuery("from User where car=:car");
+        query2.setParameter("car", car);
+        User user = (User) query2.getSingleResult();
+        return user;
+    }
+
+    @Override
+    public void addCar(Car car) {
+        sessionFactory.getCurrentSession().save(car);
+    }
 
 }

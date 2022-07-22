@@ -10,8 +10,6 @@ import java.sql.SQLException;
 public interface UserService {
     void add(User user);
     List<User> listUsers();
-    @Transactional
-    User getUserByCar(String model, int series);
-    @Transactional
     User getUserByCar(Car car);
+    void addCar(Car car);
 }
