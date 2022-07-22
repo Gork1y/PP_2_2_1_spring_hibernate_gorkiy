@@ -45,7 +45,7 @@ public class UserDaoImp implements UserDao {
     }
 
     public void dropUsersTable() {
-            sessionFactory.getCurrentSession().createSQLQuery("TRUNCATE TABLE users").executeUpdate();
+        sessionFactory.getCurrentSession().createSQLQuery("TRUNCATE TABLE users").executeUpdate();
 
     }
 }

@@ -33,8 +33,4 @@ public class UserServiceImp implements UserService {
         return userDao.getUserByCar(car.getModel(), car.getSeries());
     }
 
-    @Override
-    public void dropUsersTable() {
-        userDao.dropUsersTable();
-    }
 }
